@@ -1,0 +1,4 @@
+pytest --full-trace - for debugging
+pytest -m smoke -v
+-m is used to filter test execution based on pytest markers such as smoke, regression, or sanity.
+-v enables verbose output to clearly display each test case name and its execution result.
