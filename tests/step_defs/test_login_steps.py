@@ -2,7 +2,9 @@ from pytest_bdd import scenarios, given, when, then, parsers
 from pages.login_page import LoginPage
 from pages.account_page import AccountPage
 
-scenarios('../features')
+
+scenarios("../features/login_logout.feature")
+
 @given("user is on login page")
 def navigate_to_login_page(browser_instance):
     browser_instance.goto("https://awesomeqa.com/ui/index.php?route=account/login")
