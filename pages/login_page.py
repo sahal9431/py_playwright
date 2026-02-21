@@ -1,6 +1,4 @@
-from pages.base_page import BasePage
-
-class LoginPage(BasePage):
+class LoginPage:
 
     Email_Input = "#input-email"
     Password_Input = "#input-password"

@@ -3,6 +3,11 @@ class HomePage:
         self.page = page
     
     def add_a_product_to_cart(self):
+        # ensure we're on the storefront before trying to add a product
+        try:
+            self.page.goto("https://awesomeqa.com/ui/")
+        except Exception:
+            pass
         self.page.get_by_role("button", name="Add to Cart").first.click()
 
     def get_success_message(self):

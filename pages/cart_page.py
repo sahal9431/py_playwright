@@ -8,5 +8,9 @@ class CartPage:
     
     def verify_cart_is_empty(self):
         """Verifies that the cart is empty by checking for the presence of the empty cart message."""
-        empty_cart_message = self.page.locator("//p[text()='Your shopping cart is empty!']").text_content()
-        return empty_cart_message
+        locator = self.page.locator("//p[text()='Your shopping cart is empty!']")
+        # If multiple matches exist, return the first one's text
+        try:
+            return locator.first.text_content()
+        except Exception:
+            return locator.text_content()
