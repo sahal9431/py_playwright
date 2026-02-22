@@ -1,7 +1,7 @@
 from pages.cart_page import CartPage
 from pages.home_page import HomePage
 from pages.login_page import LoginPage
-from pytest_bdd import scenarios, given, when, then
+from pytest_bdd import scenarios, given, when, then, parsers
 
 scenarios("../features/cart.feature")
 
@@ -34,3 +34,13 @@ def remove_product_from_cart(browser_instance):
 def verify_cart_is_empty(browser_instance):
     cart_page = CartPage(browser_instance)
     cart_page.verify_cart_is_empty()
+
+@when(parsers.parse('user updates quantity to {quantity}'))
+def update_product_quantity(browser_instance, quantity):
+    cart_page = CartPage(browser_instance)
+    cart_page.update_product_quantity(quantity)
+
+@then("cart total should update correctly")
+def verify_cart_total_updated(browser_instance):
+    cart_page = CartPage(browser_instance)
+    cart_page.get_cart_total()
