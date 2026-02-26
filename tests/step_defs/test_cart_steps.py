@@ -6,12 +6,8 @@ from pytest_bdd import scenarios, given, when, then, parsers
 scenarios("../features/cart.feature")
 
 @given("user is logged in")
-def user_logged_in(browser_instance):
-    # perform explicit login so the scenario has a logged-in user
-    browser_instance.goto("https://awesomeqa.com/ui/index.php?route=account/login")
-    login_page = LoginPage(browser_instance)
-    login_page.login("leomessi107@gmail.com", "Worldcup@2022")
-    assert login_page.home_icon_visible()
+def user_logged_in(user_logged_in):
+    pass
 
 @when("user adds a product to cart")
 def add_product_to_cart(browser_instance):

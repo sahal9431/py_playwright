@@ -35,6 +35,7 @@ class CartPage:
         and verifies that the total is updated correctly based on the new quantity."""
         rows = self.page.locator("#content form table tbody tr")
         rows.first.wait_for(state = "visible")
+        print(f"Found {rows.count()} rows in the cart table.")
         for i in range(rows.count()):
             row = rows.nth(i)
             unit_price = self.parse_money(row.locator("td").nth(4).inner_text())

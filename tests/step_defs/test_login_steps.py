@@ -26,11 +26,8 @@ def verify_home_page(browser_instance):
     assert login_page.home_icon_visible()
 
 @given("user is logged in")
-def user_logged_in(browser_instance):
-    browser_instance.goto("https://awesomeqa.com/ui/index.php?route=account/login")
-    login_page = LoginPage(browser_instance)
-    login_page.login("leomessi107@gmail.com", "Worldcup@2022")
-    assert login_page.home_icon_visible()
+def user_logged_in(user_logged_in):
+    pass
 
 @when("user clicks on Logout")
 def user_clicks_on_logout(browser_instance):
