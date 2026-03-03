@@ -12,14 +12,20 @@ def browser_instance(playwright, request):
     page = context.new_page()
     yield page   # <-- test runs here
     # teardown starts here
-    if request.node.rep_call.failed:
+    if hasattr(request.node, "rep_call") and request.node.rep_call.failed:
         screenshots_dir = Path.cwd() / "screenshots"
         screenshots_dir.mkdir(exist_ok=True)
+
         name = request.node.nodeid.replace("::", "_").replace("/", "_")
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
         path = screenshots_dir / f"{name}-{ts}.png"
-        page.screenshot(path=str(path), full_page=True)
-        print(f"\nScreenshot saved: {path}")
+        try:
+            if not page.is_closed():
+                page.screenshot(path=str(path), full_page=True)
+                print(f"\nScreenshot saved: {path}")
+        except Exception as e:
+            print(f"\nFailed to capture screenshot: {e}")
+
     page.close()
     context.close()
     browser.close()
