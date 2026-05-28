@@ -1,23 +1,26 @@
-from playwright.sync_api import expect
+from pages.base_page import BasePage
 import time
 import random
 
 
-class RegistrationPage:
+class RegistrationPage(BasePage):
+    
     def __init__(self, page):
-        self.page = page
+        super().__init__(page)
         self.generated_email = None
         self.generated_phone = None
 
     def navigate_to_registration_page(self):
-        self.page.goto("https://awesomeqa.com/ui/index.php?route=account/login")
-        self.page.get_by_role('link', name='Continue').click()
+        """Navigate to the registration page"""
+        self.navigate_to("https://awesomeqa.com/ui/index.php?route=account/login")
+        self.click_by_role('link', 'Continue')
 
     def verify_user_on_registration_page(self):
-        expect(self.page.locator("//h1[text()='Register Account']")).to_be_visible()
+        """Verify user is on the registration page"""
+        self.assert_element_visible("//h1[text()='Register Account']")
 
     def registration_details_filling(self):
-        # generate unique email and telephone for each run
+        """Fill registration form with generated unique credentials"""
         ts = int(time.time())
         rnd = random.randint(100, 999)
         email = f"asifms{ts}{rnd}@example.com"
@@ -25,18 +28,19 @@ class RegistrationPage:
         self.generated_email = email
         self.generated_phone = phone
 
-        self.page.get_by_placeholder("First Name").fill("Asif")
-        self.page.get_by_placeholder("Last Name").fill("M S")
-        self.page.get_by_placeholder("E-Mail").fill(email)
-        self.page.get_by_placeholder("Telephone").fill(phone)
-        self.page.locator("#input-password").fill("Asif@1234")
-        self.page.locator("#input-confirm").fill("Asif@1234")
-        self.page.check("input[name='newsletter'][value='1']")
-        self.page.check("//input[@name = 'agree']")
+        self.send_data_by_placeholder("First Name", "Asif")
+        self.send_data_by_placeholder("Last Name", "M S")
+        self.send_data_by_placeholder("E-Mail", email)
+        self.send_data_by_placeholder("Telephone", phone)
+        self.send_data("#input-password", "Asif@1234")
+        self.send_data("#input-confirm", "Asif@1234")
+        self.check_checkbox("input[name='newsletter'][value='1']")
+        self.check_checkbox("//input[@name = 'agree']")
 
     def registration_submission(self):
-        self.page.get_by_role('button', name='Continue').click()
+        """Submit the registration form"""
+        self.click_by_role('button', 'Continue')
 
     def verify_succesful_registration(self):
-        # give a bit more time for the account page to appear
-        expect(self.page.locator("//h1[text()='Your Account Has Been Created!']")).to_be_visible(timeout=10000)
+        """Verify successful registration with timeout"""
+        self.assert_element_visible("//h1[text()='Your Account Has Been Created!']", timeout=10000)

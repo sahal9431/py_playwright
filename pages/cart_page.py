@@ -1,40 +1,39 @@
-class CartPage:
-    def __init__(self, page):
-        self.page = page
+from pages.base_page import BasePage
+
+
+class CartPage(BasePage):
     
     def remove_product_from_cart(self):
-        """Removes a product from the cart by clicking on the remove button."""
-        self.page.locator(".fa-times-circle").click()
+        """Remove a product from the cart by clicking the remove button"""
+        self.click(".fa-times-circle")
     
     def verify_cart_is_empty(self):
-        """Verifies that the cart is empty by checking for the presence of the empty cart message."""
-        locator = self.page.locator("//p[text()='Your shopping cart is empty!']")
-        # If multiple matches exist, return the first one's text
+        """Verify that the cart is empty by checking for the empty cart message"""
+        locator = "//p[text()='Your shopping cart is empty!']"
         try:
-            return locator.first.text_content()
+            return self.page.locator(locator).first.text_content()
         except Exception:
-            return locator.text_content()
+            return self.get_text(locator)
         
     def update_product_quantity(self, quantity):
-        """Updates the quantity of a product in the cart by filling the quantity input and clicking the update button."""
-        self.page.locator("input[name^='quantity']").fill(quantity)
-        self.page.locator("button[data-original-title='Update']").click()
+        """Update the quantity of a product in the cart"""
+        self.send_data("input[name^='quantity']", quantity)
+        self.click("button[data-original-title='Update']")
 
     def parse_money(self, text: str):
-        """Helper method to parse a money string and return a float value."""
+        """Helper method to parse a money string and return a float value"""
         if not text:
             return None
         match = text.replace("$", "").replace(",", "").strip()
         try:
             return float(match)
         except ValueError:
-                raise ValueError(f"Could not parse money value from text: {text}")
+            raise ValueError(f"Could not parse money value from text: {text}")
 
     def get_cart_total(self):
-        """Retrieves the cart total amount from the cart page. 
-        and verifies that the total is updated correctly based on the new quantity."""
+        """Retrieve and verify cart total amount based on product quantities"""
         rows = self.page.locator("#content form table tbody tr")
-        rows.first.wait_for(state = "visible")
+        rows.first.wait_for(state="visible")
         print(f"Found {rows.count()} rows in the cart table.")
         for i in range(rows.count()):
             row = rows.nth(i)

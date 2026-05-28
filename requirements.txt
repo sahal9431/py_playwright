@@ -1,0 +1,60 @@
+# =====================================================
+# Playwright Test Automation Project - Requirements
+# =====================================================
+
+# CORE TESTING FRAMEWORKS
+pytest==8.3.5
+pytest-bdd==8.1.0                          # BDD (Behavior-Driven Development) support
+
+# BROWSER AUTOMATION
+playwright==1.48.0                         # Playwright browser automation library
+pytest-playwright==0.7.2                   # Pytest plugin for Playwright
+
+# REPORTING & LOGGING
+pytest-html==4.2.0                         # HTML test report generation
+pytest-metadata==3.1.1                     # Test metadata collection
+
+# TESTING UTILITIES
+pytest-xdist==3.8.0                        # Parallel test execution
+pytest-base-url==2.1.0                     # Base URL fixture for tests
+
+# DEPENDENCIES (Auto-installed with above)
+# packaging>=20.0                           # Package version handling
+# pluggy>=1.5.0                             # Plugin system
+# tomli>=1.0.0                              # TOML file parsing
+# attrs>=19.3.0                             # Class utilities
+# greenlet>=1.1.2                           # Lightweight concurrency
+# anyio>=4.0                                # Async compatibility
+
+# =====================================================
+# PYTHON STANDARD LIBRARIES (No need to install)
+# =====================================================
+# os                                        # Operating system interface
+# pathlib                                   # Path manipulation
+# datetime                                  # Date and time handling
+# time                                      # Time utilities
+# random                                    # Random number generation
+# typing                                    # Type hints support
+
+# =====================================================
+# INSTALLATION COMMANDS
+# =====================================================
+# pip install -r requirements.txt           # Install all dependencies
+# playwright install                        # Install browser binaries
+# =====================================================
+
+# =====================================================
+# OPTIONAL DEPENDENCIES (For advanced features)
+# =====================================================
+# To enable parallel test execution:
+#   pytest-xdist is already included above
+#
+# To enable code coverage reports:
+#   pip install pytest-cov
+#
+# To enable performance profiling:
+#   pip install pytest-benchmark
+#
+# To enable API testing utilities:
+#   pip install requests requests-mock
+# =====================================================
