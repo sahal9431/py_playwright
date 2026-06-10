@@ -11,12 +11,15 @@ playwright==1.48.0                         # Playwright browser automation libra
 pytest-playwright==0.7.2                   # Pytest plugin for Playwright
 
 # REPORTING & LOGGING
-pytest-html==4.2.0                         # HTML test report generation
+allure-pytest==2.13.2                      # Allure report generation (advanced reporting)
 pytest-metadata==3.1.1                     # Test metadata collection
 
 # TESTING UTILITIES
 pytest-xdist==3.8.0                        # Parallel test execution
 pytest-base-url==2.1.0                     # Base URL fixture for tests
+
+# DATA HANDLING
+openpyxl==3.1.2                            # Excel file reading and writing
 
 # DEPENDENCIES (Auto-installed with above)
 # packaging>=20.0                           # Package version handling

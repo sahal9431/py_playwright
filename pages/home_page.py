@@ -1,4 +1,5 @@
 from pages.base_page import BasePage
+from utils.config import Config
 
 
 class HomePage(BasePage):
@@ -6,7 +7,7 @@ class HomePage(BasePage):
     def add_a_product_to_cart(self):
         """Add first available product to cart"""
         try:
-            self.navigate_to("https://awesomeqa.com/ui/")
+            self.navigate_to(Config.get_base_url())
         except Exception:
             pass
         self.click_nth_element("button:has-text('Add to Cart')", 0)
@@ -26,7 +27,7 @@ class HomePage(BasePage):
     def search_for_product(self, product_name):
         """Search for a product by name"""
         try:
-            self.navigate_to("https://awesomeqa.com/ui/")
+            self.navigate_to(Config.get_base_url())
         except Exception:
             pass
         self.send_data("input[name='search']", product_name)

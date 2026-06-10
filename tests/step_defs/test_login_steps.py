@@ -1,15 +1,16 @@
 from pytest_bdd import scenarios, given, when, then, parsers
 from pages.login_page import LoginPage
 from pages.account_page import AccountPage
+from utils.config import Config
 
 
 scenarios("../features/login_logout.feature")
 
 @given("user is on login page")
 def navigate_to_login_page(browser_instance):
-    browser_instance.goto("https://awesomeqa.com/ui/index.php?route=account/login")
+    browser_instance.goto(Config.get_base_url() + "index.php?route=account/login")
 
-@when(parsers.parse("user login in with email {email} and password {password}"))
+@when(parsers.parse('user login in with email "{email}" and password "{password}"'))
 def enter_invalid_credentials(browser_instance, email, password):
     login_page = LoginPage(browser_instance)
     login_page.login(email, password)

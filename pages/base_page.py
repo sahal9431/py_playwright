@@ -18,12 +18,10 @@ class BasePage:
         self.page = page
 
     # ============ Navigation Methods ============
-    def navigate_to(self, url: str) -> None:
+    def navigate_to(self, url):
         """
         Navigate to a specific URL.
         
-        Args:
-            url (str): The URL to navigate to
         """
         self.page.goto(url)
 
@@ -40,22 +38,15 @@ class BasePage:
         self.page.reload()
 
     # ============ Click Methods ============
-    def click(self, locator: str) -> None:
+    def click(self, locator: str):
         """
         Click on an element.
-        
-        Args:
-            locator (str): CSS selector or XPath of the element
         """
         self.page.locator(locator).click()
 
-    def click_by_role(self, role: str, name: str) -> None:
+    def click_by_role(self, role, name):
         """
         Click on an element by role and name.
-        
-        Args:
-            role (str): ARIA role (e.g., 'button', 'link')
-            name (str): Name of the element
         """
         self.page.get_by_role(role, name=name).click()
 
@@ -68,13 +59,9 @@ class BasePage:
         """
         self.page.get_by_text(text).click()
 
-    def click_nth_element(self, locator: str, index: int) -> None:
+    def click_nth_element(self, locator: str, index: int):
         """
         Click on the nth occurrence of an element.
-        
-        Args:
-            locator (str): CSS selector or XPath of the element
-            index (int): Index of the element (0-based)
         """
         self.page.locator(locator).nth(index).click()
 
@@ -97,27 +84,20 @@ class BasePage:
         self.page.locator(locator).click(button="right")
 
     # ============ Input Methods ============
-    def send_data(self, locator: str, text: str) -> None:
+    def send_data(self, locator, text):
         """
         Fill an input field with text.
-        
-        Args:
-            locator (str): CSS selector or XPath of the input field
-            text (str): Text to enter
         """
         self.page.locator(locator).fill(text)
 
-    def send_data_by_placeholder(self, placeholder: str, text: str) -> None:
+    def send_data_by_placeholder(self, placeholder, text):
         """
         Fill an input field by placeholder attribute.
         
-        Args:
-            placeholder (str): Placeholder text
-            text (str): Text to enter
         """
         self.page.get_by_placeholder(placeholder).fill(text)
 
-    def send_keys(self, locator: str, key_sequence: str) -> None:
+    def send_keys(self, locator, key_sequence):
         """
         Press specific keys on an element.
         
@@ -148,21 +128,15 @@ class BasePage:
         self.page.locator(locator).clear()
 
     # ============ Checkbox & Radio Methods ============
-    def check_checkbox(self, locator: str) -> None:
+    def check_checkbox(self, locator):
         """
         Check a checkbox.
-        
-        Args:
-            locator (str): CSS selector or XPath of the checkbox
         """
         self.page.locator(locator).check()
 
-    def uncheck_checkbox(self, locator: str) -> None:
+    def uncheck_checkbox(self, locator):
         """
         Uncheck a checkbox.
-        
-        Args:
-            locator (str): CSS selector or XPath of the checkbox
         """
         self.page.locator(locator).uncheck()
 
@@ -221,19 +195,12 @@ class BasePage:
         return self.page.locator(locator).input_value()
 
     # ============ Visibility Methods ============
-    def is_visible(self, locator: str, timeout: int = 5000) -> bool:
+    def is_visible(self, locator):
         """
         Check if an element is visible.
-        
-        Args:
-            locator (str): CSS selector or XPath of the element
-            timeout (int): Timeout in milliseconds
-            
-        Returns:
-            bool: True if visible, False otherwise
         """
         try:
-            return self.page.locator(locator).is_visible(timeout=timeout)
+            return self.page.locator(locator).to_be_visible()
         except Exception:
             return False
 
@@ -285,15 +252,9 @@ class BasePage:
         self.page.locator(locator).wait_for(state="hidden", timeout=timeout)
 
     # ============ Text Methods ============
-    def get_text(self, locator: str) -> str:
+    def get_text(self, locator):
         """
         Get text content from an element.
-        
-        Args:
-            locator (str): CSS selector or XPath of the element
-            
-        Returns:
-            str: Text content of the element
         """
         return self.page.locator(locator).text_content()
 
@@ -347,15 +308,9 @@ class BasePage:
         """
         return self.page.locator(locator).count()
 
-    def get_all_text_contents(self, locator: str) -> List[str]:
+    def get_all_text_contents(self, locator: str):
         """
         Get text content from all matching elements.
-        
-        Args:
-            locator (str): CSS selector or XPath of the element
-            
-        Returns:
-            list: List of text contents from all matching elements
         """
         elements = self.page.locator(locator)
         count = elements.count()
@@ -365,16 +320,13 @@ class BasePage:
         return contents
 
     # ============ Wait Methods ============
-    def wait_for_page_load(self, state: str = "networkidle") -> None:
+    def wait_for_page_load(self, state):
         """
         Wait for the page to load.
-        
-        Args:
-            state (str): Load state - 'load', 'domcontentloaded', or 'networkidle'
         """
         self.page.wait_for_load_state(state)
 
-    def wait_for_url(self, url: str, timeout: int = 5000) -> None:
+    def wait_for_url(self, url: str, timeout: int = 5000):
         """
         Wait for the page URL to match a specific pattern.
         
@@ -442,17 +394,13 @@ class BasePage:
             return self.page.screenshot()
 
     # ============ Assertion Methods ============
-    def assert_element_visible(self, locator: str, timeout: int = 5000) -> None:
+    def assert_element_visible(self, locator):
         """
         Assert that an element is visible.
-        
-        Args:
-            locator (str): CSS selector or XPath of the element
-            timeout (int): Timeout in milliseconds
         """
-        expect(self.page.locator(locator)).to_be_visible(timeout=timeout)
+        expect(self.page.locator(locator)).to_be_visible()
 
-    def assert_element_hidden(self, locator: str, timeout: int = 5000) -> None:
+    def assert_element_hidden(self, locator):
         """
         Assert that an element is hidden.
         
@@ -460,7 +408,7 @@ class BasePage:
             locator (str): CSS selector or XPath of the element
             timeout (int): Timeout in milliseconds
         """
-        expect(self.page.locator(locator)).to_be_hidden(timeout=timeout)
+        expect(self.page.locator(locator)).to_be_hidden()
 
     def assert_text_present(self, locator: str, text: str, timeout: int = 5000) -> None:
         """

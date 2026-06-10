@@ -14,9 +14,9 @@ class SearchResultsPage(BasePage):
     
     def is_product_details_displayed(self):
         """Verify if product details page is displayed"""
-        product_title = self.is_visible("h1, .heading-title", timeout=5000)
-        price_element = self.is_visible("[id*='price'], [class*='price']", timeout=5000)
-        add_to_cart = self.is_visible("button:has-text('Add to Cart')", timeout=5000)
+        product_title = self.is_visible("h1, .heading-title")
+        price_element = self.is_visible("[id*='price'], [class*='price']")
+        add_to_cart = self.is_visible("button:has-text('Add to Cart')")
         return product_title or price_element or add_to_cart
     
     def add_to_cart_from_details(self):
