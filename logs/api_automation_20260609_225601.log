@@ -1,0 +1,16 @@
+2026-06-09 22:56:02,055 - Api_automation.utils.helpers - INFO - Status validation passed: 200
+2026-06-09 22:56:02,056 - Api_automation.utils.helpers - INFO - Field 'userId' validation passed
+2026-06-09 22:56:02,056 - Api_automation.utils.helpers - INFO - Field 'userId' validation passed: 123
+2026-06-09 22:56:02,056 - Api_automation.tests.test_example - INFO - Response validation tests passed
+2026-06-09 22:56:02,061 - Api_automation.tests.test_example - INFO - Test data builder tests passed
+2026-06-09 22:56:02,064 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-06-09 22:56:16,695 - Api_automation.tests.test_network_operations - INFO - Successfully mocked no orders response
+2026-06-09 22:56:21,466 - Api_automation.tests.test_network_operations - INFO - Successfully mocked order details response
+2026-06-09 22:56:21,801 - Api_automation.services.sync_api_client - INFO - User asifms@gmail.com logged in successfully
+2026-06-09 22:56:21,801 - Api_automation.utils.api_utils - INFO - Token obtained successfully
+2026-06-09 22:56:24,577 - Api_automation.tests.test_network_operations - INFO - Session storage test passed
+2026-06-09 22:56:25,556 - Api_automation.services.sync_api_client - INFO - User asifms@gmail.com logged in successfully
+2026-06-09 22:56:25,557 - Api_automation.utils.api_utils - INFO - Token obtained successfully
+2026-06-09 22:56:25,645 - Api_automation.services.sync_api_client - INFO - Order created successfully: 6a284cc117ee3e78bacba60c
+2026-06-09 22:56:25,646 - Api_automation.utils.api_utils - INFO - Order created: 6a284cc117ee3e78bacba60c
+2026-06-09 22:56:29,663 - Api_automation.tests.test_network_operations - INFO - E2E test passed - Order 6a284cc117ee3e78bacba60c verified in UI

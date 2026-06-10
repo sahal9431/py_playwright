@@ -1,0 +1,7 @@
+2026-06-09 22:53:08,503 - Api_automation.utils.helpers - INFO - Status validation passed: 200
+2026-06-09 22:53:08,504 - Api_automation.utils.helpers - INFO - Field 'userId' validation passed
+2026-06-09 22:53:08,504 - Api_automation.utils.helpers - INFO - Field 'userId' validation passed: 123
+2026-06-09 22:53:08,504 - Api_automation.tests.test_example - INFO - Response validation tests passed
+2026-06-09 22:53:08,507 - Api_automation.tests.test_example - INFO - Test data builder tests passed
+2026-06-09 22:53:08,512 - asyncio - DEBUG - Using proactor: IocpProactor
+2026-06-09 22:53:25,163 - Api_automation.tests.test_network_operations - INFO - Successfully mocked order details response
