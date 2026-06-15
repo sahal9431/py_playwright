@@ -399,7 +399,7 @@ class BasePage:
         """
         Assert that an element is visible.
         """
-        expect(self.page.locator(locator)).is_visible()
+        expect(self.page.locator(locator)).to_be_visible()
 
     def assert_element_hidden(self, locator):
         """

@@ -23,19 +23,6 @@ class RegistrationPage(BasePage):
     def registration_details_filling(self, first_name=None, last_name=None, email=None, 
                                     phone=None, password=None, confirm_password=None, 
                                     newsletter=False, use_generated_email=True):
-        """
-        Fill registration form with provided data or generated credentials
-        
-        Args:
-            first_name: First name (if None, uses default)
-            last_name: Last name (if None, uses default)
-            email: Email address (if None, generates unique email)
-            phone: Phone number (if None, generates random)
-            password: Password (if None, uses default)
-            confirm_password: Confirm password (if None, uses default)
-            newsletter: Newsletter checkbox (if True, checks it)
-            use_generated_email: If True, generates unique email despite provided email
-        """
         # Use provided data or defaults
         first_name = first_name or "Asif"
         last_name = last_name or "M S"
