@@ -61,3 +61,4 @@ openpyxl==3.1.2                            # Excel file reading and writing
 # To enable API testing utilities:
 #   pip install requests requests-mock
 # =====================================================
+#pytest -v --alluredir=allure-results ; allure serve allure-results

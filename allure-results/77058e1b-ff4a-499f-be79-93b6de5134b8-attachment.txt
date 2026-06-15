@@ -1,0 +1,2 @@
+
+Screenshot saved: D:\Playwright_Project\screenshots\tests_step_defs_test_register_steps.py_test_user_able_to_register_with_valid_details[Jane-Smith-jane.smith@example.com-9123456789-Pass@1234-Pass@1234-No]-20260611-220818.png

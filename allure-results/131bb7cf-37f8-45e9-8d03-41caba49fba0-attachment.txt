@@ -1,0 +1,2 @@
+
+Screenshot saved: D:\Playwright_Project\screenshots\tests_step_defs_test_login_steps.py_test_login_with_invalid_credentials[test@test.com-wrong123]-20260611-225903.png

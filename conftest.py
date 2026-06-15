@@ -5,6 +5,7 @@ from datetime import datetime
 from pages.login_page import LoginPage
 from utils.excel_reader import ExcelDataReader
 import allure
+from playwright.sync_api import Page
 
 
 @pytest.fixture
@@ -33,17 +34,6 @@ def search_data(excel_data):
     """Get all search test data from Excel"""
     return excel_data.get_sheet_data("SearchData")
 
-
-@pytest.fixture(params="registration_data", indirect=True)
-def registration_test_data(request):
-    """Parametrized fixture for registration test data"""
-    data_file = Path(__file__).parent / "data" / "test_data.xlsx"
-    reader = ExcelDataReader(str(data_file))
-    data = reader.get_sheet_data("RegistrationData")
-    reader.close()
-    return data
-
-
 @pytest.fixture
 def browser_instance(playwright, request):
     browser = playwright.chromium.launch(headless=False)
@@ -54,7 +44,6 @@ def browser_instance(playwright, request):
     if hasattr(request.node, "rep_call") and request.node.rep_call.failed:
         screenshots_dir = Path.cwd() / "screenshots"
         screenshots_dir.mkdir(exist_ok=True)
-
         name = request.node.nodeid.replace("::", "_").replace("/", "_")
         ts = datetime.now().strftime("%Y%m%d-%H%M%S")
         path = screenshots_dir / f"{name}-{ts}.png"

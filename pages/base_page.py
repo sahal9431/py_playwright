@@ -200,7 +200,8 @@ class BasePage:
         Check if an element is visible.
         """
         try:
-            return self.page.locator(locator).to_be_visible()
+            self.page.wait_for_load_state("networkidle")
+            return self.page.locator(locator).is_visible()
         except Exception:
             return False
 
@@ -398,7 +399,7 @@ class BasePage:
         """
         Assert that an element is visible.
         """
-        expect(self.page.locator(locator)).to_be_visible()
+        expect(self.page.locator(locator)).is_visible()
 
     def assert_element_hidden(self, locator):
         """

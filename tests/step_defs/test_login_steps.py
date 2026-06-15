@@ -10,7 +10,7 @@ scenarios("../features/login_logout.feature")
 def navigate_to_login_page(browser_instance):
     browser_instance.goto(Config.get_base_url() + "index.php?route=account/login")
 
-@when(parsers.parse('user login in with email "{email}" and password "{password}"'))
+@when(parsers.re(r'user login in with email "(?P<email>.*)" and password "(?P<password>.*)"'))
 def enter_invalid_credentials(browser_instance, email, password):
     login_page = LoginPage(browser_instance)
     login_page.login(email, password)

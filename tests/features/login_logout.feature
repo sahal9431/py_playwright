@@ -1,6 +1,6 @@
 @smoke
 Feature: Login Functionality
-
+@regression
 Scenario Outline: Login with valid credentials
     Given user is on login page
     When user login in with email "<email>" and password "<password>"
@@ -26,7 +26,7 @@ Examples:
 Scenario Outline: Invalid login through empty credentials
     Given user is on login page
     When user login in with email "<email>" and password "<password>"
-    Then user should be navigated to home page
+    Then error message should be displayed
 
 Examples:
   | email | password |
@@ -36,7 +36,7 @@ Examples:
 Scenario Outline: Invalid login through empty username and valid password
     Given user is on login page
     When user login in with email "<email>" and password "<password>"
-    Then user should be navigated to home page
+    Then error message should be displayed
 
 Examples:
   | email | password       |
@@ -46,7 +46,7 @@ Examples:
 Scenario Outline: Invalid login through valid username and empty password
     Given user is on login page
     When user login in with email "<email>" and password "<password>"
-    Then user should be navigated to home page
+    Then error message should be displayed
 
 Examples:
   | email                 | password |
@@ -56,4 +56,4 @@ Examples:
 Scenario Outline: Logout
     Given user is logged in
     When user clicks on Logout
-    Then user should be logged out successfully
+    Then user should be logged out succesfully

@@ -1,4 +1,4 @@
-@regression
+@smoke
 Feature: Product Search Functionality
 
   Scenario: User can search for a product

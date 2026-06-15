@@ -6,7 +6,7 @@ class LoginPage(BasePage):
     Email_Input = "#input-email"
     Password_Input = "#input-password"
     Error_message = ".alert-danger"
-    Home_icon = ".img-responsive"
+    Home_icon = "//h2[text()='My Account']"
 
     def login(self, email, password):
         self.send_data(self.Email_Input, email)

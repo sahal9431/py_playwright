@@ -1,5 +1,0 @@
-2026-06-09 22:52:22,404 - Api_automation.utils.helpers - INFO - Status validation passed: 200
-2026-06-09 22:52:22,405 - Api_automation.utils.helpers - INFO - Field 'userId' validation passed
-2026-06-09 22:52:22,405 - Api_automation.utils.helpers - INFO - Field 'userId' validation passed: 123
-2026-06-09 22:52:22,405 - Api_automation.tests.test_example - INFO - Response validation tests passed
-2026-06-09 22:52:22,408 - Api_automation.tests.test_example - INFO - Test data builder tests passed

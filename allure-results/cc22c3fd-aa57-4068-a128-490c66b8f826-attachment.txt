@@ -1,0 +1,2 @@
+
+Screenshot saved: D:\Playwright_Project\screenshots\tests_step_defs_test_product_search_steps.py_test_user_can_filter_search_results_and_add_to_cart-20260611-220802.png

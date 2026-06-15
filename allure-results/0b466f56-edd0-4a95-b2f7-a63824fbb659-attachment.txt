@@ -1,0 +1,2 @@
+
+Screenshot saved: D:\Playwright_Project\screenshots\tests_step_defs_test_login_steps.py_test_invalid_login_through_empty_credentials[-]-20260611-220746.png
