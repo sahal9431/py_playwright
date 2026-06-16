@@ -4,10 +4,11 @@ pytest-bdd==8.1.0
 # Browser Automation 
 playwright==1.48.0 
 pytest-playwright==0.7.2 
-# Reporting 
-allure-pytest==2.13.2  
+# Reporting  
 pytest-metadata==3.1.1 
 pytest-html==3.2.0
+allure-pytest==2.16.0
+allure-python-commons==2.16.0
 # Parallel Execution 
 pytest-xdist==3.8.0 
 # Utilities 
