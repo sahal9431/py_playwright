@@ -52,3 +52,6 @@ def user_logged_in(browser_instance):
     login_page.login( "leomessi107@gmail.com", "Worldcup@2022" )
     assert login_page.home_icon_visible()
     return browser_instance
+
+def pytest_html_report_title(report):
+    report.title = "Playwright Automation Test Report"
