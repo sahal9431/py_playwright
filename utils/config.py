@@ -6,7 +6,7 @@ class Config:
     
     BASE_URL = "https://awesomeqa.com/ui/"
     BROWSER = "chromium"
-    HEADLESS = False
+    HEADLESS = True
     TIMEOUT = 30000
     
     @classmethod
