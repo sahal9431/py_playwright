@@ -6,7 +6,7 @@ class Config:
     
     BASE_URL = "https://awesomeqa.com/ui/"
     BROWSER = "chromium"
-    HEADLESS = True
+    HEADLESS = False
     TIMEOUT = 30000
     
     @classmethod
@@ -21,6 +21,9 @@ class Config:
     @classmethod
     def get_headless(cls):
         """Get headless mode"""
+        # Always headless in CI (Jenkins sets CI=true automatically)
+        if os.getenv("CI", "false").lower() == "true":
+            return True
         return os.getenv("HEADLESS", str(cls.HEADLESS)).lower() == "true"
     
     @classmethod

@@ -9,3 +9,15 @@ pytest -n 4 - Runs tests on 4 workers (threads/processes)
 
 
 pytest -v --alluredir=allure-results ; allure serve allure-results
+
+# Chromium (default)
+pytest -m smoke
+
+# Firefox
+pytest -m smoke --browser-name=firefox
+
+# Edge
+pytest -m smoke --browser-name=msedge
+
+# All 3 browsers
+pytest -m smoke --browser-name=chromium ; pytest -m smoke --browser-name=firefox ; pytest -m smoke --browser-name=msedge

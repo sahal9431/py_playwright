@@ -6,9 +6,36 @@ import allure
 from playwright.sync_api import Page
 from utils.config import Config
 
+def pytest_addoption(parser):
+    """Add command-line options for browser selection"""
+    parser.addoption("--browser-name", action="store", default="chromium",
+        help="Browser to run tests: chromium, firefox, msedge, all")
+
+# @pytest.fixture(params=["chromium"])  # default single browser
+# def browser_name(request):
+#     return request.param
+
+
+# #This hook runs early enough to patch fixture params
+# def pytest_sessionstart(session):
+#     option = session.config.getoption("--browser-name", default="chromium")
+#     browsers = ["chromium", "firefox", "msedge"] if option == "all" else [option]
+#     # Patch browser_name fixture params before collection
+#     browser_name._pytestfixturefunction = \
+#         browser_name._pytestfixturefunction.__replace__(params=browsers)
+
 @pytest.fixture 
 def browser_instance(playwright, request): 
-    browser = playwright.chromium.launch( headless=Config.get_headless() ) 
+    #browser = playwright.chromium.launch( headless=Config.get_headless() )
+    browser_name = request.config.getoption("--browser-name")
+    if browser_name =="chromium":
+        browser = playwright.chromium.launch(headless=Config.get_headless())
+    elif browser_name == "firefox":
+        browser = playwright.firefox.launch(headless=Config.get_headless())
+    elif browser_name == "msedge":
+        browser = playwright.chromium.launch(headless=Config.get_headless(), channel="msedge")
+    else:
+        raise ValueError(f"Unknown browser: {browser_name}")
     context = browser.new_context() 
     page = context.new_page() 
     page.set_default_timeout(Config.get_timeout()) 
