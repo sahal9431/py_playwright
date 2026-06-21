@@ -29,11 +29,14 @@ def browser_instance(playwright, request):
     #browser = playwright.chromium.launch( headless=Config.get_headless() )
     browser_name = request.config.getoption("--browser-name")
     if browser_name =="chromium":
-        browser = playwright.chromium.launch(headless=Config.get_headless())
+        browser = playwright.chromium.launch(headless=Config.get_headless(),
+                                             args=["--no-sandbox", "--disable-setuid-sandbox"])
     elif browser_name == "firefox":
-        browser = playwright.firefox.launch(headless=Config.get_headless())
+        browser = playwright.firefox.launch(headless=Config.get_headless(),
+                                            args=["--no-sandbox", "--disable-setuid-sandbox"])
     elif browser_name == "msedge":
-        browser = playwright.chromium.launch(headless=Config.get_headless(), channel="msedge")
+        browser = playwright.chromium.launch(headless=Config.get_headless(), channel="msedge", 
+                                             args=["--no-sandbox", "--disable-setuid-sandbox"])
     else:
         raise ValueError(f"Unknown browser: {browser_name}")
     context = browser.new_context() 
