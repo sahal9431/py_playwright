@@ -34,4 +34,20 @@ class HomePage(BasePage):
         self.send_keys("input[name='search']", "Enter")
         self.wait_for_page_load("networkidle")
 
-    
+    def change_currency(self, currency):
+        """Change the currency on the home page"""
+        currency_map = {"EUR": "€ Euro",
+        "GBP": "£ Pound Sterling",
+        "USD": "$ US Dollar"}
+        display_currency = currency_map.get(currency, currency)
+        self.click("//span[text()='Currency']")
+        self.page.get_by_text(display_currency).click()
+
+    def get_product_price(self):
+        """Get the price of the all product displayed on the home page"""
+        product_prices = self.get_elements(".product-thumb .price")
+        for price in product_prices:
+            price_text = price.text_content()
+            if price_text:
+                return price_text.strip()
+        return None

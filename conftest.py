@@ -11,19 +11,6 @@ def pytest_addoption(parser):
     parser.addoption("--browser-name", action="store", default="chromium",
         help="Browser to run tests: chromium, firefox, msedge, all")
 
-# @pytest.fixture(params=["chromium"])  # default single browser
-# def browser_name(request):
-#     return request.param
-
-
-# #This hook runs early enough to patch fixture params
-# def pytest_sessionstart(session):
-#     option = session.config.getoption("--browser-name", default="chromium")
-#     browsers = ["chromium", "firefox", "msedge"] if option == "all" else [option]
-#     # Patch browser_name fixture params before collection
-#     browser_name._pytestfixturefunction = \
-#         browser_name._pytestfixturefunction.__replace__(params=browsers)
-
 @pytest.fixture 
 def browser_instance(playwright, request): 
     #browser = playwright.chromium.launch( headless=Config.get_headless() )

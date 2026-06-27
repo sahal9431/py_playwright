@@ -319,6 +319,10 @@ class BasePage:
         for i in range(count):
             contents.append(elements.nth(i).text_content())
         return contents
+    
+    def get_elements(self, locator):
+        """Return a list of all matching Locator elements"""
+        return self.page.locator(locator).all()
 
     # ============ Wait Methods ============
     def wait_for_page_load(self, state):

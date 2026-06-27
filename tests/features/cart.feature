@@ -1,4 +1,4 @@
-@regression
+@smoke
 Feature: Cart Functinality
 
 Scenario Outline: Add a product to cart and remove it

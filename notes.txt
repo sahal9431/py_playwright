@@ -21,3 +21,9 @@ pytest -m smoke --browser-name=msedge
 
 # All 3 browsers
 pytest -m smoke --browser-name=chromium ; pytest -m smoke --browser-name=firefox ; pytest -m smoke --browser-name=msedge
+
+
+allure
+pytest -m smoke --browser-name=chromium --alluredir=allure-results/chromium
+pytest -m smoke --browser-name=firefox --alluredir=allure-results/firefox
+pytest -m smoke --browser-name=msedge --alluredir=allure-results/msedge
